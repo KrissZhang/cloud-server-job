@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cloud-server-job.iml" filepath="$PROJECT_DIR$/.idea/cloud-server-job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-server-job-server/cloud-server-job-server.iml" filepath="$PROJECT_DIR$/cloud-server-job-server/cloud-server-job-server.iml" />
     </modules>
   </component>
 </project>
