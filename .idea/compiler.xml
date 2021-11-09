@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="xxl-job-admin" />
         <module name="cloud-server-job-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cloud-server-job-server" target="1.8" />
+      <module name="xxl-job-admin" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

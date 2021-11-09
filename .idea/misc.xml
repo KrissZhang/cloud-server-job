@@ -7,6 +7,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/cloud-server-job-server/pom.xml" />
+        <option value="$PROJECT_DIR$/xxl-job-admin/pom.xml" />
       </list>
     </option>
   </component>
