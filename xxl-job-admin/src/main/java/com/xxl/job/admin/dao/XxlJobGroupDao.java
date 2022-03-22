@@ -24,6 +24,8 @@ public interface XxlJobGroupDao {
 
     public XxlJobGroup load(@Param("id") int id);
 
+    public XxlJobGroup loadByAppName(@Param("appName") String appName);
+
     public List<XxlJobGroup> pageList(@Param("offset") int offset,
                                       @Param("pagesize") int pagesize,
                                       @Param("appname") String appname,
