@@ -762,51 +762,50 @@ $(function() {
 
 		// show
 		$('#addModal').modal({backdrop: false, keyboard: false}).modal('show');
-
-		$('input[name="beginTime"]').daterangepicker({
-			singleDatePicker: true,
-			autoUpdateInput: false,
-			timePicker: true,
-			showDropdowns: true,
-			timePicker24Hour: true,
-			locale: {
-				format: 'YYYY-MM-DD HH:mm:ss',
-				applyLabel: I18n.system_ok,
-				cancelLabel: I18n.system_clear,
-				monthNames: I18n.daterangepicker_custom_monthnames.split(','),
-				firstDay: 1
-			},
-			minYear: 1901,
-			maxYear: parseInt(moment().format('YYYY'), 10)
-		});
-		$('input[name="beginTime"]').on('apply.daterangepicker', function (ev, picker) {
-			$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
-		});
-		$('input[name="beginTime"]').on('cancel.daterangepicker', function (ev, picker) {
-			$(this).val('');
-		});
-		$('input[name="endTime"]').daterangepicker({
-			singleDatePicker: true,
-			autoUpdateInput: false,
-			timePicker: true,
-			showDropdowns: true,
-			timePicker24Hour: true,
-			locale: {
-				format: 'YYYY-MM-DD HH:mm:ss',
-				applyLabel: I18n.system_ok,
-				cancelLabel: I18n.system_clear,
-				monthNames: I18n.daterangepicker_custom_monthnames.split(','),        // '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'
-				firstDay: 1
-			},
-			minYear: 1901,
-			maxYear: parseInt(moment().format('YYYY'), 10)
-		});
-		$('input[name="endTime"]').on('apply.daterangepicker', function (ev, picker) {
-			$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
-		});
-		$('input[name="endTime"]').on('cancel.daterangepicker', function (ev, picker) {
-			$(this).val('');
-		});
 	});
 
+	$('input[name="beginTime"]').daterangepicker({
+		singleDatePicker: true,
+		autoUpdateInput: false,
+		timePicker: true,
+		showDropdowns: true,
+		timePicker24Hour: true,
+		locale: {
+			format: 'YYYY-MM-DD HH:mm:ss',
+			applyLabel: I18n.system_ok,
+			cancelLabel: I18n.system_clear,
+			monthNames: I18n.daterangepicker_custom_monthnames.split(','),
+			firstDay: 1
+		},
+		minYear: 1901,
+		maxYear: parseInt(moment().format('YYYY'), 10)
+	});
+	$('input[name="beginTime"]').on('apply.daterangepicker', function (ev, picker) {
+		$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+	});
+	$('input[name="beginTime"]').on('cancel.daterangepicker', function (ev, picker) {
+		$(this).val('');
+	});
+	$('input[name="endTime"]').daterangepicker({
+		singleDatePicker: true,
+		autoUpdateInput: false,
+		timePicker: true,
+		showDropdowns: true,
+		timePicker24Hour: true,
+		locale: {
+			format: 'YYYY-MM-DD HH:mm:ss',
+			applyLabel: I18n.system_ok,
+			cancelLabel: I18n.system_clear,
+			monthNames: I18n.daterangepicker_custom_monthnames.split(','),        // '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'
+			firstDay: 1
+		},
+		minYear: 1901,
+		maxYear: parseInt(moment().format('YYYY'), 10)
+	});
+	$('input[name="endTime"]').on('apply.daterangepicker', function (ev, picker) {
+		$(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+	});
+	$('input[name="endTime"]').on('cancel.daterangepicker', function (ev, picker) {
+		$(this).val('');
+	});
 });
