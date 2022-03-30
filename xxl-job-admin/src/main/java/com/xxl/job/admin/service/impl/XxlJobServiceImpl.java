@@ -354,6 +354,19 @@ public class XxlJobServiceImpl implements XxlJobService {
 	}
 
 	@Override
+	public ReturnT<String> batchStart(List<Integer> ids) {
+		for (Integer id : ids) {
+			try{
+				start(id);
+			}catch (Exception e){
+				logger.error("启动失败，id：{}", id, e);
+			}
+		}
+
+		return ReturnT.SUCCESS;
+	}
+
+	@Override
 	public ReturnT<String> stop(int id) {
         XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
 

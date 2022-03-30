@@ -69,6 +69,14 @@ public interface XxlJobService {
 	public ReturnT<String> start(int id);
 
 	/**
+	 * start jobs
+	 *
+	 * @param ids
+	 * @return
+	 */
+	public ReturnT<String> batchStart(List<Integer> ids);
+
+	/**
 	 * stop job
 	 *
 	 * @param id

@@ -152,6 +152,13 @@ public class JobInfoController {
 	public ReturnT<String> start(int id) {
 		return xxlJobService.start(id);
 	}
+
+	@RequestMapping("/batchStart")
+	@ResponseBody
+	public ReturnT<String> batchStart(String ids) {
+		List<Integer> idList = Arrays.asList(ids.split(",")).stream().map(Integer::parseInt).collect(Collectors.toList());
+		return xxlJobService.batchStart(idList);
+	}
 	
 	@RequestMapping("/trigger")
 	@ResponseBody
