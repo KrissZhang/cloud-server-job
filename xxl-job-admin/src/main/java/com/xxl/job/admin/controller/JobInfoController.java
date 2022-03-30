@@ -32,6 +32,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * index controller
@@ -125,11 +126,25 @@ public class JobInfoController {
 	public ReturnT<String> remove(int id) {
 		return xxlJobService.remove(id);
 	}
+
+	@RequestMapping("/batchRemove")
+	@ResponseBody
+	public ReturnT<String> batchRemove(String ids) {
+		List<Integer> idList = Arrays.asList(ids.split(",")).stream().map(Integer::parseInt).collect(Collectors.toList());
+		return xxlJobService.batchRemove(idList);
+	}
 	
 	@RequestMapping("/stop")
 	@ResponseBody
 	public ReturnT<String> pause(int id) {
 		return xxlJobService.stop(id);
+	}
+
+	@RequestMapping("/batchStop")
+	@ResponseBody
+	public ReturnT<String> batchPause(String ids) {
+		List<Integer> idList = Arrays.asList(ids.split(",")).stream().map(Integer::parseInt).collect(Collectors.toList());
+		return xxlJobService.batchStop(idList);
 	}
 	
 	@RequestMapping("/start")

@@ -18,6 +18,7 @@ import com.xxl.job.core.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.text.MessageFormat;
@@ -303,6 +304,24 @@ public class XxlJobServiceImpl implements XxlJobService {
 	}
 
 	@Override
+	public ReturnT<String> batchRemove(List<Integer> ids) {
+		if(!CollectionUtils.isEmpty(ids)){
+			for (Integer id : ids) {
+				XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
+				if (xxlJobInfo == null) {
+					continue;
+				}
+
+				xxlJobInfoDao.delete(id);
+				xxlJobLogDao.delete(id);
+				xxlJobLogGlueDao.deleteByJobId(id);
+			}
+		}
+
+		return ReturnT.SUCCESS;
+	}
+
+	@Override
 	public ReturnT<String> start(int id) {
 		XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
 
@@ -344,6 +363,27 @@ public class XxlJobServiceImpl implements XxlJobService {
 
 		xxlJobInfo.setUpdateTime(new Date());
 		xxlJobInfoDao.update(xxlJobInfo);
+		return ReturnT.SUCCESS;
+	}
+
+	@Override
+	public ReturnT<String> batchStop(List<Integer> ids) {
+		if(!CollectionUtils.isEmpty(ids)){
+			for (Integer id : ids) {
+				XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
+				if(xxlJobInfo == null){
+					continue;
+				}
+
+				xxlJobInfo.setTriggerStatus(0);
+				xxlJobInfo.setTriggerLastTime(0);
+				xxlJobInfo.setTriggerNextTime(0);
+
+				xxlJobInfo.setUpdateTime(new Date());
+				xxlJobInfoDao.update(xxlJobInfo);
+			}
+		}
+
 		return ReturnT.SUCCESS;
 	}
 
